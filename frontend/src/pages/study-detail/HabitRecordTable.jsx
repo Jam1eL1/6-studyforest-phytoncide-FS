@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { getAllHabits } from "@api/today-habit/habit.api";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styles from "./HabitRecordTable.module.css";
-import stickerWhite from "/images/stickers/sticker-white.svg";
 import stickerBlue100 from "/images/stickers/sticker-blue-100.svg";
 import stickerBlue200 from "/images/stickers/sticker-blue-200.svg";
 import stickerBlue300 from "/images/stickers/sticker-blue-300.svg";
@@ -19,8 +20,30 @@ import stickerPink300 from "/images/stickers/sticker-pink-300.svg";
 import stickerPink400 from "/images/stickers/sticker-pink-400.svg";
 import stickerPurple100 from "/images/stickers/sticker-purple-100.svg";
 import stickerPurple200 from "/images/stickers/sticker-purple-200.svg";
-import { useParams } from "react-router-dom";
-import { getAllHabits } from "@api/today-habit/habit.api";
+import stickerWhite from "/images/stickers/sticker-white.svg";
+
+const days = ["월", "화", "수", "목", "금", "토", "일"];
+
+const allStickers = [
+  stickerBlue100,
+  stickerBlue200,
+  stickerBlue300,
+  stickerBlue400,
+  stickerBlue500,
+  stickerGreen100,
+  stickerGreen200,
+  stickerGreen300,
+  stickerGreen400,
+  stickerOrange100,
+  stickerOrange200,
+  stickerOrange300,
+  stickerPink100,
+  stickerPink200,
+  stickerPink300,
+  stickerPink400,
+  stickerPurple100,
+  stickerPurple200,
+];
 
 function HabitRecordTable() {
   const { studyId } = useParams();
@@ -29,6 +52,7 @@ function HabitRecordTable() {
   const [currentWeekDates, setCurrentWeekDates] = useState([]);
   const [habitCompletions, setHabitCompletions] = useState({});
 
+  // TODO: 이런 걸 utils 함수로 빼내자~
   // 현재 주의 날짜(월요일-일요일) 생성
   const getCurrentWeekDates = () => {
     const today = new Date();
@@ -101,29 +125,6 @@ function HabitRecordTable() {
 
     return completions;
   };
-
-  const days = ["월", "화", "수", "목", "금", "토", "일"];
-
-  const allStickers = [
-    stickerBlue100,
-    stickerBlue200,
-    stickerBlue300,
-    stickerBlue400,
-    stickerBlue500,
-    stickerGreen100,
-    stickerGreen200,
-    stickerGreen300,
-    stickerGreen400,
-    stickerOrange100,
-    stickerOrange200,
-    stickerOrange300,
-    stickerPink100,
-    stickerPink200,
-    stickerPink300,
-    stickerPink400,
-    stickerPurple100,
-    stickerPurple200,
-  ];
 
   const getStickerForRow = (rowIndex) => {
     const stickerIndex = rowIndex % allStickers.length;

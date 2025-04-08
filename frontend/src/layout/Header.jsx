@@ -4,6 +4,7 @@ import logo1 from "/images/logo/logo_icon.svg";
 import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
+  // TODO: isOpen 의미가 적합하지 않음
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 

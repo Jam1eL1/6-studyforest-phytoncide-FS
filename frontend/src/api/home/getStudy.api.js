@@ -40,6 +40,7 @@ export const getRecentlyViewedStudies = async (studyIds) => {
   }
 };
 
+// TODO: 객체의 키를 한글로 쓰는 건 언제 어디서 문제가 발생할지 모르니까 지양하자~!
 // 정렬 옵션 매핑
 export const SORT_OPTIONS = {
   "최근 순": { orderBy: "createAt", sort: "desc" },

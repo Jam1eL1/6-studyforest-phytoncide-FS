@@ -1,6 +1,6 @@
+import bcrypt from "bcrypt";
 import express from "express";
 import prisma from "../../db/prisma/client.prisma.js";
-import bcrypt from "bcrypt";
 
 const studyPatchRouter = express.Router();
 const SALT_ROUNDS = 10;
@@ -9,6 +9,8 @@ studyPatchRouter.patch("/:studyId/update", async (req, res) => {
   const { studyId } = req.params;
   const { nickName, title, description, encryptedPassword, background } =
     req.body;
+
+  // TODO: 작성한 사람만 업데이트 할 수 있어야 하니까 password 검증이 있어야 하는데 빠졌다
 
   if (
     typeof nickName !== "string" ||

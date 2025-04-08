@@ -59,24 +59,30 @@ habitsRouter.put("/:studyId/habits", async (req, res, next) => {
       (dbHabit) => !habits.some((habit) => habit.id === dbHabit.id)
     );
 
+    const createHabitsPromises = newHabits.map((habit) =>
+      prisma.habit.create({
+        data: { title: habit.title, isDone: habit.isDone, studyId },
+      })
+    );
+
+    const updateHabitsProsmises = updatedHabits.map((habit) =>
+      prisma.habit.update({
+        where: { id: habit.id },
+        data: { title: habit.title, isDone: habit.isDone },
+      })
+    );
+
+    const deleteHabitsPromises = deletedHabits.map((habit) =>
+      prisma.habit.update({
+        where: { id: habit.id },
+        data: { isDone: true },
+      })
+    );
+
     await Promise.all([
-      ...newHabits.map((habit) =>
-        prisma.habit.create({
-          data: { title: habit.title, isDone: habit.isDone, studyId },
-        })
-      ),
-      ...updatedHabits.map((habit) =>
-        prisma.habit.update({
-          where: { id: habit.id },
-          data: { title: habit.title, isDone: habit.isDone },
-        })
-      ),
-      ...deletedHabits.map((habit) =>
-        prisma.habit.update({
-          where: { id: habit.id },
-          data: { isDone: true },
-        })
-      ),
+      ...createHabitsPromises,
+      ...updateHabitsProsmises,
+      ...deleteHabitsPromises,
     ]);
 
     res.json({ message: "습관 목록이 성공적으로 업데이트되었습니다!" });

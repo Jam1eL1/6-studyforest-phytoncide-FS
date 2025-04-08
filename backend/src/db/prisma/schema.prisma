@@ -21,6 +21,7 @@ model Study {
   habits            Habit[]           @relation("StudyHabits")
 }
 
+// TODO: 이름 Case가 이상해...
 enum Study_backgrounds {
   bg1
   bg2
@@ -47,7 +48,7 @@ model Habit {
   updatedAt DateTime    @updatedAt
   study     Study       @relation("StudyHabits", fields: [studyId], references: [id], onDelete: Cascade)
   studyId   Int
-  isDone    Boolean     @default(false)
+  isDone    Boolean     @default(false) // TODO: 소프트 삭제면 isDeleted로 이름 짓는 게 맞음. 누가 isDone을 보고 소프트 삭제인지 알아용 ㅜㅠ
   HabitDone HabitDone[]
 }
 

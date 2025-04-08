@@ -1,13 +1,17 @@
+import bcrypt from "bcrypt";
 import express from "express";
 import prisma from "../../db/prisma/client.prisma.js";
-import bcrypt from "bcrypt";
 
 const studyPostRouter = express.Router();
 
+/**
+ * 스터디 만들기
+ */
 studyPostRouter.post("/", async (req, res, next) => {
   try {
     const data = req.body;
 
+    // TODO: 프론트에서 데이터 보낼 때 그냥 password라는 이름으로 보내는 게 맞다.
     if (!data.title || !data.encryptedPassword) {
       res.status(400).json({ message: "제목 또는 비밀번호가 없습니다." });
     }

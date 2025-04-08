@@ -1,7 +1,8 @@
+import bcrypt from "bcrypt";
 import express from "express";
 import prisma from "../../db/prisma/client.prisma.js";
-import bcrypt from "bcrypt";
 
+// TODO: 이름 짓는 게 부실해요.. ㅜㅠ
 const editFormVerifyPassword = express.Router();
 
 editFormVerifyPassword.post(

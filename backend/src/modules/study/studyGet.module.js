@@ -1,9 +1,14 @@
+import { Prisma } from "@prisma/client";
 import express from "express";
 import prisma from "../../db/prisma/client.prisma.js";
-import { Prisma } from "@prisma/client";
 
 const studyGetRouter = express.Router();
 
+// TODO: 각 API 엔드포인트 별로 주석을 달아 놓으면 좀 더 좋겠음. 어떤 목적의 엔드포인트인지 정도
+
+/**
+ * 전체 스터디 조회
+ */
 studyGetRouter.get("/", async (req, res, next) => {
   try {
     const {
@@ -56,6 +61,9 @@ studyGetRouter.get("/", async (req, res, next) => {
   }
 });
 
+/**
+ * 최근 조회한 스터디
+ */
 studyGetRouter.get("/recently", async (req, res, next) => {
   try {
     const { studyIds } = req.query;
@@ -107,6 +115,9 @@ studyGetRouter.get("/recently", async (req, res, next) => {
   }
 });
 
+/**
+ * 스터디 상세 조회
+ */
 studyGetRouter.get("/:studyId", async (req, res, next) => {
   try {
     const studyId = Number(req.params.studyId);

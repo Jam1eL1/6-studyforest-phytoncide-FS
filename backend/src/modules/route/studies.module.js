@@ -1,13 +1,14 @@
 import express from "express";
-import editFormVerifyPassword from "../study/editFormVerifyPassword.module.js";
-import studyPatchRouter from "../study/studyPatch.module.js";
-import studyGetRouter from "../study/studyGet.module.js";
-import studyPostRouter from "../study/studyPost.module.js";
-import studyDeleteRouter from "../study/studyDelete.module.js";
 import emojiRouter from "../emoji/emojis.module.js";
+import editFormVerifyPassword from "../study/editFormVerifyPassword.module.js";
+import studyDeleteRouter from "../study/studyDelete.module.js";
+import studyGetRouter from "../study/studyGet.module.js";
+import studyPatchRouter from "../study/studyPatch.module.js";
+import studyPostRouter from "../study/studyPost.module.js";
 
 const studyRouter = express.Router();
 
+// TODO: 왜 모아놓았지?
 studyRouter.use(
   "/",
   studyGetRouter,

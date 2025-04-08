@@ -6,6 +6,8 @@ import Habits from "@today-habit/Habits";
 import StudyNavbar from "@components/study-navbar/StudyNavbar";
 import CurrentTime from "@today-habit/CurrentTime";
 
+// TODO: `Page.jsx` 컴포넌트 같은 걸 만들어 쓰면 어땠을까
+
 const TodayHabit = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리
   const [isLoading, setIsLoading] = useState(true);

@@ -1,6 +1,8 @@
-import prisma from "../../db/prisma/client.prisma.js";
 import express from "express";
+import prisma from "../../db/prisma/client.prisma.js";
 const emojiRouter = express.Router();
+
+// TODO: 에러처리를 에러 미들웨어에 위임하도록 코드를 작성해 주세요~!
 
 // 이모지 저장 API
 emojiRouter.post("/:id/emojis", async (req, res) => {

@@ -1,6 +1,6 @@
+import bcrypt from "bcrypt";
 import express from "express";
 import prisma from "../../db/prisma/client.prisma.js";
-import bcrypt from "bcrypt";
 
 const studyDeleteRouter = express.Router();
 
@@ -18,6 +18,7 @@ studyDeleteRouter.delete("/:studyId", async (req, res, next) => {
       return res.status(404).json({ message: "스터디를 찾을 수 없습니다." });
     }
 
+    // TODO: 불리언은 is땡땡으로 써주면 더욱 좋을 것 같아요
     const passwordMatch = await bcrypt.compare(
       password,
       study.encryptedPassword
