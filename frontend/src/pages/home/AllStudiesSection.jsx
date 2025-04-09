@@ -11,7 +11,7 @@ const AllStudiesSection = () => {
   const [studies, setStudies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const [sortType, setSortType] = useState("최근 순");
+  const [sortType, setSortType] = useState("latest");
   const [offset, setOffset] = useState(0);
 
   // 서버 호출에 대한 유연성을 위해 파라미터를 받아옴
