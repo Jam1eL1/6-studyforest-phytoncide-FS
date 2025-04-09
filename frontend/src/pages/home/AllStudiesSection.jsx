@@ -14,7 +14,7 @@ const AllStudiesSection = () => {
   const [sortType, setSortType] = useState("latest");
   const [offset, setOffset] = useState(0);
 
-  // 서버 호출에 대한 유연성을 위해 파라미터를 받아옴
+  // 서버 호출에 대한 유연성을 위해 파라미터를 받아옵니다.
   const fetchStudies = useCallback(
     async (params = {}) => {
       try {
